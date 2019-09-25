@@ -1,0 +1,97 @@
+carmen=# \d
+ public | city            | table | jb
+ public | country         | table | jb
+ public | countrylanguage | table | jb
+
+Country
+code          	| character(3)  |           | not null |
+ name           | text          |           | not null |
+ continent      | text          |           | not null |
+ region         | text          |           | not null |
+ surfacearea    | real          |           | not null |
+ indepyear      | smallint      |           |          |
+ population     | integer       |           | not null |
+ lifeexpectancy | real          |           |          |
+ gnp            | numeric(10,2) |           |          |
+ gnpold         | numeric(10,2) |           |          |
+ localname      | text          |           | not null |
+ governmentform | text          |           | not null |
+ headofstate    | text          |           |          |
+ capital        | integer       |           |          |
+ code2          | character(2)  |           | not null |
+
+
+carmen=# \d countrylanguage;
+ countrycode | character(3) |           | not null |
+ language    | text         |           | not null |
+ isofficial  | boolean      |           | not null |
+ percentage  | real         |           | not null |
+
+
+
+
+
+
+1.
+carmen=# SELECT * FROM country;
+carmen=# SELECT \d country;
+carmen=# SELECT * FROM country WHERE region='Southern Europe';
+carmen=# SELECT * FROM country WHERE region ='Southern Europe' ORDER BY population;
+//Vatican
+
+
+2.
+carmen=# SELECT * FROM countrylanguage;
+// VAT         | Italian                   | t          |          0
+
+
+
+3.carmen=# \d countrylanguage;
+carmen=# SELECT * FROM countrylanguage WHERE language='Italian' ORDER BY percentage DESC;
+carmen=# SELECT name,lifeexpectancy FROM country WHERE code='SMR';
+ San Marino |           81.1
+
+
+
+
+4.carmen=# SELECT * FROM city WHERE countrycode='SMR';
+carmen=# SELECT * FROM city WHERE countrycode='SMR';
+ 3170 | Serravalle | SMR         | Serravalle/Dogano |       4802
+ 3171 | San Marino | SMR         | San Marino        |       2294
+
+
+
+
+
+
+5.   /* SELECT * FROM city WHERE name 'Serravalle%';
+	carmen=# SELECT * FROM country WHERE region='South America';
+	SELECT * FROM city WHERE name LIKE 'Serrava%';
+	carmen=# SELECT * FROM city WHERE name LIKE 'Serra%';'
+  265 | Serra      | BRA         | Espï¿½rito Santo  |     302666
+ 3170 | Serravalle | SMR         | Serravalle/Dogano |       4802*/
+
+carmen=# SELECT * FROM country WHERE code='BRA';
+
+/*BRA  | Brazil | South America | South America |  8.5474e+06 |      1822 |  170115000 |           62.9 | 776739.00 | 804108.00 | Brasil    | Federal Republic | Fernando Henrique Cardoso |     211 | BR*/
+
+
+
+
+6. carmen=# \d city;
+ id          | integer      |           | not null |
+ name        | text         |           | not null |
+ countrycode | character(3) |           | not null |
+ district    | text         |           | not null |
+ population  | integer      |           | not null |
+
+Id = capital
+
+
+
+
+7.carmen=# SELECT * FROM city WHERE population=1969868;
+ 211 | Brasï¿½lia | BRA         | Distrito Federal |    1969868
+
+carmen=# SELECT * FROM city WHERE population=91084;
+ 4060 | Santa Monica | USA         | California |      91084
